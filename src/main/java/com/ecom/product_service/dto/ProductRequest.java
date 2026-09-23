@@ -1,17 +1,16 @@
 package com.ecom.product_service.dto;
 
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class ProductRequest {
 
     @NotBlank(message = "Product name is required")
     private String name;
 
-    @NotBlank(message = "Product description is required")
+    @Size(max = 1000, message = "Description cannot exceed 1000 characters")
     private String description;
 
     @NotNull(message = "Price is required")
@@ -21,12 +20,19 @@ public class ProductRequest {
     @NotBlank(message = "Brand is required")
     private String brand;
 
-    private String imageUrl;
+    @NotBlank(message = "Product type is required")
+    private String type;
 
     @NotNull(message = "Category ID is required")
     private Long categoryId;
 
-    // getters and setters
+    @NotEmpty(message = "At least one product image is required")
+    private List<@NotBlank(message = "Image URL cannot be blank") String> imageUrls;
+
+    public ProductRequest() {
+    }
+
+    // Getters and Setters
 
     public String getName() {
         return name;
@@ -60,12 +66,12 @@ public class ProductRequest {
         this.brand = brand;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getType() {
+        return type;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Long getCategoryId() {
@@ -74,5 +80,13 @@ public class ProductRequest {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public List<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
     }
 }

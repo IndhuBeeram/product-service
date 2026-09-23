@@ -2,22 +2,36 @@ package com.ecom.product_service.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ProductResponse {
 
     private Long id;
+
     private String name;
+
     private String description;
+
     private BigDecimal price;
+
     private String brand;
-    private String imageUrl;
-    private Boolean active;
+
+    private String type;
 
     private Long categoryId;
+
     private String categoryName;
 
+    private Boolean active;
+
+    private List<String> imageUrls;
+
     private LocalDateTime createdAt;
+
     private LocalDateTime updatedAt;
+
+    public ProductResponse() {
+    }
 
     // Getters and Setters
 
@@ -61,20 +75,12 @@ public class ProductResponse {
         this.brand = brand;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getType() {
+        return type;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Long getCategoryId() {
@@ -91,6 +97,22 @@ public class ProductResponse {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public List<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
     }
 
     public LocalDateTime getCreatedAt() {
